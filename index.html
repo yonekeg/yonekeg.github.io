@@ -3,57 +3,558 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Yoneke Graham | Portfolio</title>
+      <title>Yoneke Graham | Data Analyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; }
-          header { background: #161b22; padding: 60px 20px; text-align: center; border-bottom: 1px solid #30363d; }
-          header h1 { font-size: 2.8em; color: #58a6ff; margin-bottom: 10px; }
-          header p { font-size: 1.1em; color: #8b949e; }
-          header a { color: #58a6ff; text-decoration: none; }
-          .projects { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
-          .projects h2 { font-size: 2em; color: #e6edf3; margin-bottom: 30px; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
-          .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-          .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; transition: transform 0.2s, border-color 0.2s; }
-          .card:hover { transform: translateY(-4px); border-color: #58a6ff; }
-          .card h3 { color: #58a6ff; font-size: 1.2em; margin-bottom: 10px; }
-          .card p { color: #8b949e; font-size: 0.95em; line-height: 1.6; margin-bottom: 16px; }
-          .card a { display: inline-block; color: #58a6ff; text-decoration: none; font-size: 0.9em; border: 1px solid #30363d; border-radius: 6px; padding: 6px 14px; }
-          .card a:hover { background: #21262d; }
-          .tag { display: inline-block; background: #21262d; color: #79c0ff; border-radius: 20px; padding: 3px 12px; font-size: 0.8em; margin-right: 6px; margin-bottom: 10px; }
-          footer { text-align: center; padding: 40px; color: #8b949e; border-top: 1px solid #30363d; margin-top: 60px; font-size: 0.9em; }
-          footer a { color: #58a6ff; text-decoration: none; }
+          *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+          html { scroll-behavior: smooth; }
+
+          body {
+                  font-family: 'Inter', sans-serif;
+                  background: linear-gradient(135deg, #e8e4f3 0%, #f0eef8 25%, #e4eef8 50%, #eaf4f0 75%, #f4f0f8 100%);
+                  min-height: 100vh;
+                  color: #1a1a2e;
+          }
+
+          /* NAV */
+          nav {
+                  position: fixed;
+                  top: 20px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  z-index: 100;
+                  background: rgba(255,255,255,0.85);
+                  backdrop-filter: blur(12px);
+                  border: 1px solid rgba(255,255,255,0.6);
+                  border-radius: 50px;
+                  padding: 10px 28px;
+                  display: flex;
+                  gap: 6px;
+                  align-items: center;
+                  box-shadow: 0 4px 24px rgba(100,80,160,0.1);
+          }
+          nav a {
+                  text-decoration: none;
+                  color: #555;
+                  font-size: 0.9rem;
+                  font-weight: 500;
+                  padding: 7px 16px;
+                  border-radius: 40px;
+                  transition: all 0.2s;
+          }
+          nav a:hover, nav a.active {
+                  background: #1a1a2e;
+                  color: #fff;
+          }
+          .nav-status {
+                  margin-left: 8px;
+                  font-size: 0.82rem;
+                  color: #22c55e;
+                  font-weight: 500;
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+          }
+          .nav-status::before {
+                  content: '';
+                  width: 8px; height: 8px;
+                  background: #22c55e;
+                  border-radius: 50%;
+                  display: inline-block;
+          }
+
+          /* SECTIONS */
+          section { padding: 100px 40px 60px; max-width: 1100px; margin: 0 auto; }
+
+          /* HERO */
+          #home {
+                  min-height: 100vh;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  text-align: center;
+                  padding-top: 120px;
+          }
+          .roles-pill {
+                  background: rgba(255,255,255,0.7);
+                  border: 1px solid rgba(100,80,160,0.2);
+                  border-radius: 40px;
+                  padding: 8px 22px;
+                  font-size: 0.85rem;
+                  color: #5b4fcf;
+                  margin-bottom: 40px;
+                  letter-spacing: 0.02em;
+          }
+          .hero-name {
+                  font-family: 'Playfair Display', serif;
+                  font-size: clamp(3.5rem, 8vw, 7rem);
+                  font-weight: 700;
+                  line-height: 1.05;
+                  color: #1a1a2e;
+                  margin-bottom: 20px;
+          }
+          .hero-name span {
+                  color: #5b4fcf;
+                  font-style: italic;
+                  font-weight: 400;
+          }
+          .hero-tagline {
+                  font-family: 'Playfair Display', serif;
+                  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+                  font-style: italic;
+                  color: #444;
+                  margin-bottom: 28px;
+          }
+          .hero-desc {
+                  max-width: 600px;
+                  font-size: 1rem;
+                  line-height: 1.7;
+                  color: #555;
+                  margin-bottom: 44px;
+          }
+          .hero-desc strong { color: #1a1a2e; }
+          .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+          .btn-primary {
+                  background: linear-gradient(135deg, #5b4fcf, #7c6fe0);
+                  color: #fff;
+                  border: none;
+                  padding: 14px 30px;
+                  border-radius: 40px;
+                  font-size: 0.95rem;
+                  font-weight: 600;
+                  cursor: pointer;
+                  text-decoration: none;
+                  transition: transform 0.2s, box-shadow 0.2s;
+                  box-shadow: 0 4px 16px rgba(91,79,207,0.3);
+          }
+          .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(91,79,207,0.4); }
+          .btn-secondary {
+                  background: rgba(255,255,255,0.8);
+                  color: #1a1a2e;
+                  border: 1px solid rgba(0,0,0,0.12);
+                  padding: 14px 30px;
+                  border-radius: 40px;
+                  font-size: 0.95rem;
+                  font-weight: 500;
+                  cursor: pointer;
+                  text-decoration: none;
+                  transition: all 0.2s;
+          }
+          .btn-secondary:hover { background: #fff; transform: translateY(-2px); }
+
+          /* STATS */
+          .stats-bar {
+                  max-width: 900px;
+                  margin: 0 auto 0;
+                  background: rgba(255,255,255,0.7);
+                  border: 1px solid rgba(255,255,255,0.8);
+                  border-radius: 20px;
+                  display: flex;
+                  justify-content: space-around;
+                  padding: 36px 40px;
+                  backdrop-filter: blur(8px);
+                  box-shadow: 0 4px 20px rgba(100,80,160,0.07);
+          }
+          .stat { text-align: center; }
+          .stat-num {
+                  font-size: 2.2rem;
+                  font-weight: 700;
+                  color: #5b4fcf;
+                  font-family: 'Playfair Display', serif;
+          }
+          .stat-label {
+                  font-size: 0.8rem;
+                  color: #777;
+                  margin-top: 4px;
+                  line-height: 1.3;
+          }
+
+          /* SECTION LABELS */
+          .section-label {
+                  font-size: 0.78rem;
+                  font-weight: 600;
+                  letter-spacing: 0.12em;
+                  text-transform: uppercase;
+                  color: #5b4fcf;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin-bottom: 18px;
+          }
+          .section-label::before {
+                  content: '';
+                  width: 30px; height: 2px;
+                  background: #5b4fcf;
+                  display: inline-block;
+          }
+          .section-title {
+                  font-family: 'Playfair Display', serif;
+                  font-size: clamp(2rem, 4vw, 3rem);
+                  font-weight: 700;
+                  line-height: 1.15;
+                  color: #1a1a2e;
+                  margin-bottom: 50px;
+          }
+          .section-title em {
+                  color: #5b4fcf;
+                  font-style: italic;
+                  font-weight: 400;
+          }
+
+          /* PROJECTS */
+          #projects { padding-top: 80px; }
+          .projects-grid {
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  grid-template-rows: auto auto;
+                  gap: 20px;
+          }
+          .project-card {
+                  background: rgba(255,255,255,0.75);
+                  border: 1px solid rgba(255,255,255,0.9);
+                  border-radius: 18px;
+                  padding: 32px;
+                  backdrop-filter: blur(8px);
+                  transition: transform 0.2s, box-shadow 0.2s;
+          }
+          .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(100,80,160,0.12); }
+          .project-card.featured {
+                  grid-row: 1 / 3;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+          }
+          .project-num {
+                  font-size: 0.78rem;
+                  color: #aaa;
+                  font-weight: 600;
+                  letter-spacing: 0.08em;
+                  margin-bottom: 12px;
+          }
+          .project-badge {
+                  display: inline-block;
+                  background: linear-gradient(135deg, #5b4fcf, #7c6fe0);
+                  color: #fff;
+                  font-size: 0.75rem;
+                  padding: 4px 12px;
+                  border-radius: 20px;
+                  margin-bottom: 14px;
+                  font-weight: 500;
+          }
+          .project-card h3 {
+                  font-family: 'Playfair Display', serif;
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  color: #1a1a2e;
+                  margin-bottom: 12px;
+                  line-height: 1.3;
+          }
+          .project-card p {
+                  color: #666;
+                  font-size: 0.92rem;
+                  line-height: 1.65;
+                  margin-bottom: 20px;
+          }
+          .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+          .project-tag {
+                  background: rgba(91,79,207,0.08);
+                  color: #5b4fcf;
+                  font-size: 0.78rem;
+                  padding: 4px 12px;
+                  border-radius: 20px;
+                  border: 1px solid rgba(91,79,207,0.15);
+          }
+          .project-link {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: #5b4fcf;
+                  font-size: 0.85rem;
+                  font-weight: 600;
+                  text-decoration: none;
+                  padding: 8px 18px;
+                  border: 1.5px solid rgba(91,79,207,0.3);
+                  border-radius: 30px;
+                  transition: all 0.2s;
+          }
+          .project-link:hover { background: #5b4fcf; color: #fff; border-color: #5b4fcf; }
+
+          /* SKILLS */
+          #skills { padding-top: 80px; }
+          .skill-row {
+                  background: rgba(255,255,255,0.65);
+                  border: 1px solid rgba(255,255,255,0.85);
+                  border-radius: 16px;
+                  padding: 22px 28px;
+                  margin-bottom: 14px;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 30px;
+                  backdrop-filter: blur(6px);
+          }
+          .skill-category {
+                  font-weight: 600;
+                  font-size: 0.88rem;
+                  color: #1a1a2e;
+                  min-width: 130px;
+                  padding-top: 4px;
+          }
+          .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+          .skill-pill {
+                  background: #fff;
+                  border: 1px solid rgba(0,0,0,0.1);
+                  color: #333;
+                  font-size: 0.82rem;
+                  padding: 5px 14px;
+                  border-radius: 30px;
+                  transition: all 0.2s;
+          }
+          .skill-pill:hover { background: #5b4fcf; color: #fff; border-color: #5b4fcf; }
+
+          /* CONTACT */
+          #contact { padding-top: 80px; padding-bottom: 100px; }
+          .contact-box {
+                  background: rgba(255,255,255,0.7);
+                  border: 1px solid rgba(255,255,255,0.9);
+                  border-radius: 24px;
+                  padding: 60px;
+                  text-align: center;
+                  backdrop-filter: blur(8px);
+          }
+          .contact-box h2 {
+                  font-family: 'Playfair Display', serif;
+                  font-size: 2.2rem;
+                  color: #1a1a2e;
+                  margin-bottom: 14px;
+          }
+          .contact-box p { color: #666; font-size: 1rem; margin-bottom: 36px; }
+          .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+          .contact-link {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 12px 26px;
+                  border-radius: 40px;
+                  text-decoration: none;
+                  font-weight: 500;
+                  font-size: 0.9rem;
+                  transition: all 0.2s;
+          }
+          .contact-link.github { background: #1a1a2e; color: #fff; }
+          .contact-link.github:hover { background: #000; transform: translateY(-2px); }
+          .contact-link.email { background: rgba(255,255,255,0.9); color: #1a1a2e; border: 1px solid rgba(0,0,0,0.12); }
+          .contact-link.email:hover { background: #fff; transform: translateY(-2px); }
+
+          /* FOOTER */
+          footer {
+                  text-align: center;
+                  padding: 30px;
+                  color: #aaa;
+                  font-size: 0.82rem;
+                  border-top: 1px solid rgba(0,0,0,0.06);
+          }
+
+          @media (max-width: 768px) {
+                  nav { padding: 8px 16px; gap: 2px; }
+                  nav a { padding: 6px 10px; font-size: 0.8rem; }
+                  section { padding: 80px 20px 40px; }
+                  .projects-grid { grid-template-columns: 1fr; }
+                  .project-card.featured { grid-row: auto; }
+                  .stats-bar { flex-wrap: wrap; gap: 24px; padding: 28px 20px; }
+                  .skill-row { flex-direction: column; gap: 12px; }
+                  .contact-box { padding: 40px 24px; }
+          }
         </style>
   </head>
   <body>
-      <header>
-            <h1>Yoneke Graham</h1>
-          <p>Data Analyst &amp; Developer &bull; <a href="https://github.com/yonekeg">github.com/yonekeg</a>a></p>
-      </header>
-    <main class="projects">
-        <h2>My Projects</h2>
-        <div class="grid">
-              <div class="card">
-                      <span class="tag">Jupyter Notebook</span>span>
-                      <h3>E-Commerce Analysis</h3>
-                      <p>Data analysis exploring e-commerce trends, customer behavior, and sales insights using Python and Jupyter Notebooks.</p>
-                      <a href="https://github.com/yonekeg/E-Commerce-Analysis">View on GitHub &rarr;</a>a>
+
+      <!-- NAV -->
+      <nav>
+            <a href="#home" class="active">Home</a>a>
+            <a href="#projects">Projects</a>a>
+            <a href="#skills">Skills</a>a>
+            <a href="#contact">Contact</a>a>
+            <span class="nav-status">Open to Work</span>span>
+      </nav>
+
+      <!-- HERO -->
+      <section id="home">
+            <div class="roles-pill">&#10022; Data Analyst &middot; Researcher &middot; Data Scientist</div>div>
+            <h1 class="hero-name">Yoneke <span>Graham</span></h1>h1>
+          <p class="hero-tagline">Turning data into decisions that matter</p>p>
+          <p class="hero-desc">
+            <strong>Data Analyst &amp; Researcher</strong> with a passion for e-commerce analytics
+            and smart grid energy systems. Building data-driven insights that power better decisions.
+          </p>p>
+          <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Projects</a>a>
+                <a href="#contact" class="btn-secondary">Get in Touch</a>a>
+          </div>div>
+      </section>section>
+  
+    <!-- STATS -->
+    <div style="max-width:1100px; margin: 0 auto; padding: 0 40px 80px;">
+        <div class="stats-bar">
+              <div class="stat">
+                      <div class="stat-num">2+</div>div>
+                      <div class="stat-label">Projects<br>completed</div>div>
               </div>div>
-              <div class="card">
-                      <span class="tag">Research</span>span>
-                      <h3>Smart Grid Research</h3>
-                      <p>Research on smart grid technology and energy systems, exploring modern approaches to power grid management and optimization.</p>
-                      <a href="https://github.com/yonekeg/smartgrid-research">View on GitHub &rarr;</a>a>
+              <div class="stat">
+                      <div class="stat-num">E-Com</div>div>
+                      <div class="stat-label">Analytics &amp;<br>insights</div>div>
+              </div>div>
+              <div class="stat">
+                      <div class="stat-num">Smart</div>div>
+                      <div class="stat-label">Grid<br>research</div>div>
+              </div>div>
+              <div class="stat">
+                      <div class="stat-num">Data</div>div>
+                      <div class="stat-label">Driven<br>approach</div>div>
               </div>div>
         </div>div>
-    </main>main>
+    </div>div>
+  
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">My Work</div>div>
+        <h2 class="section-title">Featured <em>Projects</em></h2>h2>
+        <div class="projects-grid">
+        
+              <!-- Featured -->
+              <div class="project-card featured">
+                      <div>
+                                  <div class="project-num">01 / BEST WORK</div>
+                                  <span class="project-badge">&#128200; Data Analysis</span>
+                                  <h3>E-Commerce Analysis</h3>
+                                <p>In-depth analysis of e-commerce trends, customer behavior, and sales patterns using Python and Jupyter Notebooks. Uncovering actionable insights from real-world transaction data.</p>
+                                <div class="project-tags">
+                                            <span class="project-tag">Python</span>
+                                            <span class="project-tag">Jupyter Notebook</span>
+                                            <span class="project-tag">Pandas</span>
+                                            <span class="project-tag">Matplotlib</span>
+                                </div>
+                      </div>
+                      <a href="https://github.com/yonekeg/E-Commerce-Analysis" target="_blank" class="project-link">View on GitHub &rarr;</a>a>
+              </div>
+        
+              <!-- Project 2 -->
+              <div class="project-card">
+                      <div class="project-num">02</div>
+                      <h3>Smart Grid Research</h3>
+                      <p>Research on smart grid technology and energy systems, exploring modern approaches to power grid management, optimization, and sustainability.</p>
+                      <div class="project-tags">
+                                <span class="project-tag">Research</span>
+                                <span class="project-tag">Energy Systems</span>
+                                <span class="project-tag">Smart Grid</span>
+                      </div>
+                      <a href="https://github.com/yonekeg/smartgrid-research" target="_blank" class="project-link">View on GitHub &rarr;</a>a>
+              </div>
+        
+        </div>
+    </section>section>
+  
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">Expertise</div>
+        <h2 class="section-title">What I <em>work with</em></h2>
+    
+        <div class="skill-row">
+              <div class="skill-category">Languages</div>
+              <div class="skill-pills">
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">SQL</span>
+                      <span class="skill-pill">R</span>
+                      <span class="skill-pill">JavaScript</span>
+              </div>
+        </div>
+    
+        <div class="skill-row">
+              <div class="skill-category">Data Analysis</div>
+              <div class="skill-pills">
+                      <span class="skill-pill">Pandas</span>
+                      <span class="skill-pill">NumPy</span>
+                      <span class="skill-pill">Scikit-learn</span>
+                      <span class="skill-pill">SciPy</span>
+                      <span class="skill-pill">Statsmodels</span>
+              </div>
+        </div>
+    
+        <div class="skill-row">
+              <div class="skill-category">Visualization</div>
+              <div class="skill-pills">
+                      <span class="skill-pill">Matplotlib</span>
+                      <span class="skill-pill">Seaborn</span>
+                      <span class="skill-pill">Plotly</span>
+                      <span class="skill-pill">Tableau</span>
+                      <span class="skill-pill">Power BI</span>
+              </div>
+        </div>
+    
+        <div class="skill-row">
+              <div class="skill-category">Tools &amp; Platforms</div>
+              <div class="skill-pills">
+                      <span class="skill-pill">Jupyter</span>
+                      <span class="skill-pill">Git</span>
+                      <span class="skill-pill">GitHub</span>
+                      <span class="skill-pill">VS Code</span>
+                      <span class="skill-pill">Excel</span>
+              </div>
+        </div>
+    
+        <div class="skill-row">
+              <div class="skill-category">Research</div>
+              <div class="skill-pills">
+                      <span class="skill-pill">Smart Grids</span>
+                      <span class="skill-pill">Energy Systems</span>
+                      <span class="skill-pill">Statistical Analysis</span>
+                      <span class="skill-pill">A/B Testing</span>
+              </div>
+        </div>
+    </section>section>
+  
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-box">
+              <h2>Let&rsquo;s Connect</h2>
+              <p>Open to data analyst roles, research collaborations, and interesting projects.</p>
+              <div class="contact-links">
+                      <a href="https://github.com/yonekeg" target="_blank" class="contact-link github">
+                                &#128279; GitHub &mdash; @yonekeg
+                      </a>a>
+                      <a href="mailto:yonekeg@gmail.com" class="contact-link email">
+                                &#9993; Send an Email
+                      </a>a>
+              </div>
+        </div>
+    </section>section>
+  
     <footer>
-          <p>Built with GitHub Pages &mdash; <a href="https://github.com/yonekeg">@yonekeg</a>a> &copy; 2026</p>p>
+          <p>Built with GitHub Pages &mdash; Yoneke Graham &copy; 2026</p>
     </footer>
+  
+    <script>
+          // Active nav highlight on scroll
+          const sections = document.querySelectorAll('section[id]');
+          const navLinks = document.querySelectorAll('nav a');
+          window.addEventListener('scroll', () => {
+                  let current = '';
+                  sections.forEach(s => {
+                            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+                  });
+                  navLinks.forEach(a => {
+                            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+                  });
+          });
+    </script>
+
   </body>
 </html>html>
-    </footer></p></p></h1>
-      </header>
+    </script></p>
+    </footer></em></p></p></h3>
+                      </div></em></strong></span>
+      </nav>
   </body>
     </style></title>
   </head>
